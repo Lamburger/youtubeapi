@@ -3,7 +3,7 @@ var GOOGLE_KEY = 'AIzaSyBFwOrnxz26vxWS_vwYxU6KabSMyEd8yW0';
 
 function getDataFromApi(searchTerm, callback) {
   var query = {
-    q: "searchTerm",
+    q: searchTerm,
     part: 'snippet',
     key: GOOGLE_KEY
   }
@@ -13,9 +13,9 @@ function getDataFromApi(searchTerm, callback) {
 
 function displayYoutubeSearchData(data) {
   var resultElement = '';
-  if (data.Search) {
-    data.Search.forEach(function(item) {
-     resultElement += '<p>' + item.Title + '</p>';
+  if (data.items) {
+    data.items.forEach(function(item) {
+     resultElement += '<p>' + item.snippet.title + '</p>';
     });
   }
   else {
